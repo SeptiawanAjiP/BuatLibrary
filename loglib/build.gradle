@@ -1,7 +1,7 @@
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
-
+    id 'maven-publish'
 }
 
 android {
@@ -34,4 +34,18 @@ android {
 dependencies {
 
 
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+
+                groupId = 'com.github.SeptiawanAjiP'
+                artifactId = 'loglib'
+                version = '1.0.0'
+            }
+        }
+    }
 }
